@@ -1,0 +1,15 @@
+Defining the keys : 
+ 
+the keyboard is projected optically on a flat surface and, 
+as the user touches the image of a key, the optical device 
+detects the stroke and sends it to the computer.
+ 
+Drawing the letter on keyboard : 
+
+To start creating the virtual keyboard, I first created an empty black window.
+i call it keyboard and using numpy library I simply created a black image with
+the size of 1500 pixels of width and 1000 pixels of height.
+Then I can add the keys. Each key is simply a rectangle containing some text.
+So I define the sizes and I draw the rectangle. Using two dimensional array this
+program it will simply pass the letter and it’s position and run theough a loop so that 
+it can appear on the screen while the webcam is on.
