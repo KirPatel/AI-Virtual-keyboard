@@ -1,0 +1,15 @@
+import cv2 as cv
+import mediapipe as mp
+from pynput.keyboard import Controller
+import math
+from time import sleep
+
+cap = cv.VideoCapture(0)
+cap.set(3, 1250)
+cap.set(4, 640)
+
+while True:
+    success, img = cap.read()
+    imgRGB = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+    cv.imshow("Camera", img)
+    cv.waitKey(1)
