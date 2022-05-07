@@ -5,7 +5,6 @@ import math
 from time import sleep
 
 """
-
 I want this Artificial Intellengence Virtual Keybaord for the enhancement of the normal
 keybaord. To do this I used the OpenCV and mediapipe libraries from google libraries.
 To begin with the algrothim, a sinmple python code to start the camera and read the video.
