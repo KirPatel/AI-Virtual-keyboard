@@ -4,10 +4,21 @@ from pynput.keyboard import Key, Controller
 import math
 from time import sleep
 
+"""
+
+I want this Artificial Intellengence Virtual Keybaord for the enhancement of the normal
+keybaord. To do this I used the OpenCV and mediapipe libraries from google libraries.
+To begin with the algrothim, a sinmple python code to start the camera and read the video.
+"""
+
 cap = cv.VideoCapture(0)
 cap.set(3, 1250)
 cap.set(4, 640)
 
+
+    """
+    An empty array to store the clicked key.
+    """
 arr = []
 keyLayout = [["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "<"],
  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -15,17 +26,34 @@ keyLayout = [["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "<"],
  ["Z", "X", "C", "V", "B", "N", "M"],
  [" "]]
 
+    """
+    An array that holds the keys of the keybaord
+    """
+
 mpHands = mp.solutions.hands
 mpDraw = mp.solutions.drawing_utils
 Hands = mpHands.Hands()
 keyboard = Controller()
 mpDraw = mp.solutions.drawing_utils
 
+    """
+    Function: To read and run the hands through the camera.
+    drawing the landmarks of the hands.
+    reading the hands.
+    connecting the hand tracking with the virtual keybaord.
+    Drawing and editing the keyboard.
+    """
+
 class settings():
     def __init__(self, pos, size, text):
         self.pos = pos
         self.size = size
         self.text = text
+      
+    """
+    Class: To set the location of the keys for everytime the hands
+    goes near it it will click.
+    """
 
 def keyboardEdit(img, storedVar):
     for button in storedVar:
@@ -36,11 +64,23 @@ def keyboardEdit(img, storedVar):
         cv.putText(img, button.text, (x + 15, y + 35), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 4)
 
     return img
+   
+    """
+    Function: To make and to click the keys on the keyboard which is also
+    connected with the array and the loaction of the keys.
+    """
 
 for i in range(len(keyLayout)):
     for j, key in enumerate(keyLayout[i]):
         arr.append(settings([60 * j + 10, 60 * i + 10], [50, 50], key))
+    
+    """
+    loop: To give its own loaction on the camera.
+    """
 
+    """
+    main code
+    """
 while True:
     success, img = cap.read()
     imgRGB = cv.cvtColor(img, cv.COLOR_BGR2RGB)
